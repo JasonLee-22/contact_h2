@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>New Contact</title>
+
+    <style>
+        input[type=text] {
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type=submit] {
+            width: 30%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+    </style>
+
+    <script>
+        function check() {
+            var x;
+            x = document.getElementById("email").value;
+            var num = /^[1-9]+[0-9]*]*$/;
+            var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+            var t;
+            t = document.getElementById("tel").value;
+            var q;
+            q = document.getElementById("qq").value;
+            if(!myreg.test(x))
+            {
+                alert('Invalid E_mail！');
+
+                return false;
+            }
+            else if(!num.test(t))
+            {
+                alert('Invalid Tel！');
+                return false;
+            }
+            else if(!num.test(q))
+            {
+                alert('Invalid QQ!');
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h1>New Contact</h1>
+
+<div>
+
+    <form action= "edit" method = "post">
+        <input type="hidden" name="id" th:value="${c.id}">
+        <label for="name">Name</label><br>
+        <input type="text" id = "name" name="name"><br>
+        <label for="tel">Tel</label><br>
+        <input type="text" id="tel" name="tel"><br>
+        <label for="email">E-mail</label><br>
+        <input type="text" id="email" name="email"><br>
+        <label for="qq">QQ</label><br>
+        <input type="text" id="qq" name="qq"><br>
+        <label for="add">Address</label><br>
+        <input type="text" id = "add" name="add"><br>
+        <input type="submit" class = "button" onclick="check()" value = "Edit"/>
+    </form>
+</div>
+</body>
+</html>

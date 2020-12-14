@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>Contact</title>
+
+<style>
+button {
+  width: 30%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+</style>
+	<script>
+		function d(var1) {
+			window.location.replace("todel?id="+var1)
+		}
+
+		function e(var1) {
+			window.location.replace("toedit?id="+var1)
+		}
+	</script>
+
+</head>
+<body>
+
+<h1>Contact</h1>
+<!--
+<form>
+
+<dl>
+<dt>Cherry</dt>
+<dd>- Tel:123<br>
+	- E-mail:123@123.com<br>
+	- QQ:123<br>
+	- Address: xxx<br>
+</dd>
+<dt>Frank</dt>
+<dd>- Tel:456<br>
+	- E-mail:456@456.com<br>
+	- QQ:456<br>
+	- Address: xxx<br>
+</dd>
+</dl>
+		<form action = "edit" method = "post">
+			<input type="button" class = "button" value = "Edit" onclick="location.href='/toedit'">
+		</form>
+
+</form>-->
+
+<div th:each="c,cStat:${cList}">
+	<dt>Name:<span th:text="${c.name}"/></dt>
+	<dd>- Tel:<span th:text="${c.tel}"/><br>
+		- E-mail:<span th:text="${c.email}"/><br>
+		- QQ:<span th:text="${c.qq}"/><br>
+		- Address:<span th:text="${c.address}"/><br>
+
+
+
+		<a type="button" class="btn  btn-xs btn-danger"
+		   th:href="@{/toedit(id=${c.id})}">Edit</a>
+
+		<a type="button" class="btn  btn-xs btn-danger"
+		   th:href="@{/todel(id=${c.id})}">Delete</a>
+
+	</dd>
+
+</div>
+<!--
+<div>
+	<p>Name:<span th:text="${person.name}"/></p>
+	<p>Tel:<span th:text="${person.tel}"/></p>
+	<p>E-mail:<span th:text="${person.email}"/></p>
+	<p>QQ:<span th:text="${person.qq}"/></p>
+	<p>Address:<span th:text="${person.address}"/></p>
+</div> -->
+
+<!--
+<input type="button" class = "button" value = "Edit" onclick="location.href='/toedit'"><br>
+<input type="button" class = "button" value = "Delete" onclick="location.href='/todel'"><br>
+-->
+<input type="button" class = "button" value = "Add" onclick="location.href='/toadd'"><br>
+
+</body>
+</html>
